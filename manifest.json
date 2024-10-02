@@ -1,0 +1,13 @@
+{
+    "name": "Cang",
+    "version": "1.0",
+    "description": "DuckDuckGo Bangs for Chrome",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "omnibox": {
+        "keyword": "!"
+    }
+    
+}
