@@ -1,19 +1,19 @@
 chrome.omnibox.onInputEntered.addListener((text) => {
     const bangs = {
-        "!wk" : "https://en.wikipedia.org/wiki/Special:Search?search=", 
-        "!yt" : "https://www.youtube.com/results?search_query=", //youtube,
-        "!g" : "https://www.google.com/search?q=", // google,
-        "!gi" : "https://www.google.com/search?tbm=isch&q=", // google images,
-        "!gn" : "https://news.google.com/search?q=", // google news,
-        "!sch" : "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=", // google scholar,
-        "!az" : "https://www.amazon.in/s?k=", // amazon,
-        "!imdb" : "https://www.imdb.com/find?q=", // imdb,
-        "!tw" : "https://twitter.com/search?q=", // twitter,
-        "!gh" : "https://github.com/search?q=", // github,
-        "!so" : "https://stackoverflow.com/search?q=", // stackoverflow,
-        "!r" : "https://www.reddit.com/search/?q=", // reddit,
-        "!gm" : "https://www.google.com/maps/place/", // google maps,
-        "!mail" : "https://mail.google.com/mail/u/0/#search/", // gmail,
+        ".wk" : "https://en.wikipedia.org/wiki/Special:Search?search=", 
+        ".yt" : "https://www.youtube.com/results?search_query=", 
+        ".g" : "https://www.google.com/search?q=", 
+        ".gi" : "https://www.google.com/search?tbm=isch&q=", 
+        ".gn" : "https://news.google.com/search?q=", 
+        ".sch" : "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=", 
+        ".az" : "https://www.amazon.in/s?k=", 
+        ".imdb" : "https://www.imdb.com/find?q=", 
+        ".tw" : "https://twitter.com/search?q=", 
+        ".gh" : "https://github.com/search?q=", 
+        ".so" : "https://stackoverflow.com/search?q=",
+        ".r" : "https://www.reddit.com/search/?q=", 
+        ".gm" : "https://www.google.com/maps/place/", 
+        ".mail" : "https://mail.google.com/mail/u/0/#search/",
 
     }
     const searchItems = text.split(" ");
@@ -33,3 +33,10 @@ chrome.omnibox.onInputEntered.addListener((text) => {
     // chrome.tabs.create({url: searchUrl});
     chrome.tabs.update({url: searchUrl});
 });
+
+chrome.omnibox.onInputStarted.addListener(() => {
+    chrome.omnibox.setDefaultSuggestion({
+        description: "Example = [.yt for Youtube, .g for Google, .mail for Gmaiil, .r for Reddit, .gh for Github, .wk for Wikipedia, .az for Amazon, etc.]"
+    });
+}
+);
