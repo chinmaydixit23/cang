@@ -19,15 +19,12 @@ chrome.omnibox.onInputEntered.addListener((text) => {
     const searchItems = text.split(" ");
     let searchUrl = "";
     if(searchItems[0] in bangs){
-        //
         searchUrl = bangs[searchItems[0]] + searchItems.slice(1).join(" ");
     }
     else if(searchItems[searchItems.length - 1] in bangs){
-        //
         searchUrl = bangs[searchItems[searchItems.length - 1]] + searchItems.slice(0, searchItems.length - 1).join(" ");
     }
     else{
-        //
         searchUrl = "https://www.google.com/search?q=" + text; 
     }
     // chrome.tabs.create({url: searchUrl});
